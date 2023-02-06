@@ -1,15 +1,15 @@
 import { Card, Col } from "react-bootstrap";
 import { Component } from "react";
-import CommentsArea from "./CommentsArea";
 
 class SingleBook extends Component {
   state = { selected: false };
   render() {
     return (
       <>
-        <Col lg={2} md={3} sm={6}>
+        <Col lg={4} md={6} sm={12}>
           <Card
             onClick={() => {
+              this.props.setAsin(this.props.singleBook.asin);
               if (this.state.selected) {
                 this.setState({
                   selected: false,
@@ -20,22 +20,17 @@ class SingleBook extends Component {
                 });
               }
             }}
-            className={
-              this.state.selected ? "selected-book card-fix" : "card-fix"
-            }
+            className={this.state.selected ? "card-fix" : "card-fix"}
           >
             <Card.Img
               variant="top"
               src={this.props.singleBook.img}
               className="image-fix"
             />
-            <Card.Title>{this.props.singleBook.title}</Card.Title>
-            <Card.Text>
+            <p>{this.props.singleBook.title}</p>
+            <p>
               {this.props.singleBook.category} | {this.props.singleBook.price}€
-            </Card.Text>
-            {this.state.selected && (
-              <CommentsArea asin={this.props.singleBook.asin}></CommentsArea>
-            )}
+            </p>
           </Card>
         </Col>
       </>
