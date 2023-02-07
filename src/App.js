@@ -36,7 +36,7 @@ class App extends Component {
           </Col>
           <Col lg={4}>
             <h3 className="mt-3">Comments</h3>
-            <CommentsArea setAsin={this.state.asin}></CommentsArea>
+            <CommentsArea asinAsProp={this.state.asin}></CommentsArea>
           </Col>
         </Row>
         <MyFooter></MyFooter>

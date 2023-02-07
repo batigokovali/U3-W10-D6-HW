@@ -13,7 +13,7 @@ class CommentsArea extends Component {
 
   fetchComments = async () => {
     try {
-      let response = await fetch(url + this.props.setAsin, {
+      let response = await fetch(url + this.props.asinAsProp, {
         headers: {
           Authorization:
             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2RiYzJjMDUwMWZlODAwMTU2MGMyMzUiLCJpYXQiOjE2NzUzNDY2MjQsImV4cCI6MTY3NjU1NjIyNH0.L9TWAnkkI6V95MFjHRHarcB_cj1rJo5fo-QWNsZgByE",
@@ -37,7 +37,7 @@ class CommentsArea extends Component {
     console.log("Book ASIN Updated!");
     console.log("Previous ASIN was:", prevProps);
     console.log("Current ASIN is:", this.props);
-    if (prevProps.setAsin !== this.props.setAsin) {
+    if (prevProps.asinAsProp !== this.props.asinAsProp) {
       console.log("Update on asin!");
       this.fetchComments();
     }
@@ -47,7 +47,7 @@ class CommentsArea extends Component {
     return this.state.comments.map((comment) => {
       return (
         <>
-          {this.props.setAsin ? (
+          {this.props.asinAsProp ? (
             <CommentsList
               key={comment._id}
               singleComment={comment}
